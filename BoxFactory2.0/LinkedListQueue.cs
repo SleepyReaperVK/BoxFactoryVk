@@ -60,6 +60,20 @@ namespace BoxFactory2._0
             }
                 return str;
         }
+        public string BackToFront()// back it the oldest box in the shop while front is the latest
+        {
+            if (isEmpty())
+                return default;
+            var temp = back;
+            string str = string.Empty;
+            while (temp != null)
+            {
+                str += temp.Data + "\n";
+                temp = temp.Back;
+            }
+            return str;
+        }
+
 
 
 
@@ -69,11 +83,13 @@ namespace BoxFactory2._0
     {
         private T _data;
         private TNode<T> _next;
+        private TNode<T> _prev;
 
         public TNode(T date , TNode<T> next)
         {
             _data = date;
             _next = next;
+            _prev = null;
         }
 
         public T Data { get { return _data; } set { _data = value; } }
