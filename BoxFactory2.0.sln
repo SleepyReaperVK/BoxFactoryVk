@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxFactory2.0", "BoxFactory2.0\BoxFactory2.0.csproj", "{A0CB725E-C09C-40C5-95A8-9888D6E052D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxFactory.Logi", "BTree\BoxFactory.Logi.csproj", "{DFBD9951-F20E-4275-BCC7-4A7A109E0360}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0CB725E-C09C-40C5-95A8-9888D6E052D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0CB725E-C09C-40C5-95A8-9888D6E052D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0CB725E-C09C-40C5-95A8-9888D6E052D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0CB725E-C09C-40C5-95A8-9888D6E052D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFBD9951-F20E-4275-BCC7-4A7A109E0360}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFBD9951-F20E-4275-BCC7-4A7A109E0360}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFBD9951-F20E-4275-BCC7-4A7A109E0360}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFBD9951-F20E-4275-BCC7-4A7A109E0360}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51D6868B-F40B-425C-B48F-B3060FC1D871}
+	EndGlobalSection
+EndGlobal
