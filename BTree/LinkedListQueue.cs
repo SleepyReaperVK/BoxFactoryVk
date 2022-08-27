@@ -10,15 +10,13 @@ namespace BoxFactory2._0
 
     public class LinkedListQueue<T>
     {
-        private TNode<T> front, back;// front is the oldessin the queue while Back is the latest
+        private TNode<T> front, back;
 
         public LinkedListQueue()
         {
             front = back = null;
         }
-
-        //O(1)
-        public void Enqueue(T val)// adds a box to the  back aka the to the youngest box
+        public void Enqueue(T val)
         {
             var temp = new TNode<T>( val, null,null);
 
@@ -27,59 +25,30 @@ namespace BoxFactory2._0
                 front = back = temp;
             else
             {
-                var temp2 = back;
-               back.Next = temp;
+                back.Next = temp;
+                back.Prev = back;
                 back = temp;
-                back.Prev = temp2;
 
             }
         }
 
-        //O(1)
         public bool isEmpty()
         {
             return front == null;
         }
 
-        //O(1)
-        public T Dequeue()/// returns the oldes of boxes//
+        public T Dequeue()
         {
             if (isEmpty())
                 return default;
             T temp = front.Data;
             front = front.Next;
-            front.Prev = null;
             if (front == null)
                 back = null;
             return temp;
         }
 
-        //O(n)
-        public bool remove(T val)
-        {
-            var temp = new TNode<T>(val, null, null);
-            bool isSuccessful = false;
-            if (isEmpty())
-                return isSuccessful ;
-            var temp2 = back;
-            // goes from the the youngest box to the oldes 
-            while (true)
-            {
-                if(temp2 ==null)
-                    break ;
-                if (temp.Data.Equals(temp2.Data))
-                {
-                    temp2.Prev.Next = temp2.Next;
-                    isSuccessful= true;
-                    break;
-                }
-                temp2 = temp2.Prev;
-            }
-            return isSuccessful;
-
-
-        }
-        public string DisplayFromOlder()// front is the oldessin the queue while Back is the latest
+        public string FrontToBack()// front the lates box added Back the oldes box added to shop.
         {
             if (isEmpty())
                 return default;
@@ -92,7 +61,7 @@ namespace BoxFactory2._0
             }
                 return str;
         }
-        public string DisplayFromYounger()// back it the oldest box in the shop while front is the latest
+        public string BackToFront()// back it the oldest box in the shop while front is the latest
         {
             if (isEmpty())
                 return default;
@@ -106,7 +75,8 @@ namespace BoxFactory2._0
             return str;
         }
 
-        
+
+
 
     }
 
@@ -116,7 +86,7 @@ namespace BoxFactory2._0
         private TNode<T> _next;
         private TNode<T> _prev;
 
-        public TNode(T date , TNode<T> next , TNode<T> prev)
+        public TNode(T date , TNode<T> next, TNode<T> prev)
         {
             _data = date;
             _next = next;

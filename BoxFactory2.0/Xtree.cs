@@ -22,17 +22,13 @@ namespace BoxFactory2._0
             XTree = new BinaryTree<double, BinaryTree<double, Box>>();
         }
 
-        public void InsertX(double x)
+
+        public void Insert(double x, double y)
         {
             BinaryTree<double, Box> ytr = new BinaryTree<double, Box>();
-            XTree.Insert(x, ytr);
-
-        }
-
-        public void InsertY(double x, double y)
-        {
-            var temp = XTree.Find(x);//find if node with key x exist
-            var tempY = XTree.Root.Value.Root; // give statrt value;
+            XTree.Insert(x, ytr);//insert x in xtr in the right place  with the an empty ytr.
+            var temp = XTree.Find(x);//find if node with key x exist.
+            var tempY = XTree.Root.Value.Root; // give statrt value.
             if (temp != null && temp.Value != null)// if x is found then check if y found if is add stock +1 , else make new node in ytr 
                 tempY = temp.Value.Find(y);
             if (tempY != null)
@@ -40,26 +36,47 @@ namespace BoxFactory2._0
             else
             {
                 Box newBox = new Box(x, y, 1);
-                Queue.Enqueue(newBox);
                 temp.Value.Insert(y, newBox); // posobility for exeptions 
+                Queue.Enqueue(newBox);//posobility for exeptions
             }
-
-
-
-
         }
 
         public Node<double, BinaryTree<double, Box>> Find(double x)
         {
             return XTree.Find(x);
         }
-
+        
+        /// <summary>
+        /// Removes y from ytr , if ytr is null , remove the x. 
+        /// if y.box stock goes to zero , remove y from ytr adn del the box in Queue
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
         public void Remove(double x , double y)
         {
+            var ytr = XTree.Find(x).Value;
+            if (ytr != null)//if null remove the x ; 
+            {
+              var yBox =  ytr.Find(y).Value;// may be null
+            if(yBox.Stock== 1) // last stock , can remove the box from ytr and queue
+                {
+                    Console.WriteLine("wasRemove "+ Queue.remove(yBox));
+                        ytr.Remove(y);
+                    if (ytr == null)
+                        XTree.Remove(x);
+
+                }
+            else if (yBox.Stock > 1)// nore then 1 in stock then sub 1 from the stock
+                    yBox.Stock--;
+            }
+             
+            else
+                XTree.Remove(x);
 
         }
 
 
+        #region needs Testing and refining
         public void BigRange(double t, double r)
         {
             double xRange = t * 2;
@@ -67,7 +84,7 @@ namespace BoxFactory2._0
             var current = this.XTree.Root;
 
 
-            List<Box> tada =(BigRange(current, xRange, yRange));
+            List<Box> tada = (BigRange(current, xRange, yRange));
             foreach (Box box in tada)
                 Console.WriteLine(box.ToString());
         }
@@ -135,6 +152,7 @@ namespace BoxFactory2._0
             return first.Concat(second).ToList();
         }
 
+        #endregion
 
 
     }
