@@ -12,19 +12,11 @@ class program
     public static void Main(string[] args)
     {
 
-        var config = new Configuration();
-        
-        Console.WriteLine($"Max boxes: {config.Data.MaxBoxes}");
-        Console.WriteLine($"Foo: {config.Data.Foo}");
-        Console.WriteLine($"Xs: {config.Data.XXXXXXXXX}");
-        config.Data.MaxBoxes = 3;
-        Console.WriteLine($"Max boxes: {config.Data.MaxBoxes}");
-        config.update(config.Data);
-        Console.ReadKey();
+       Configuration config = new Configuration();
 
         //// xtree is an object using Btree to make the xtree with ytree as its value
         #region test 1 treeSetup
-        xtree xtree = new xtree();
+        xtree xtree = new xtree(config);
 
 
         xtree.Insert(11.0, 10);//front - oldes
@@ -47,7 +39,13 @@ class program
 
 
 
-
+        
+        
+        Console.WriteLine($"Xtree: {xtree.Config.Data.DataXTree}");
+        Console.ReadKey();
+        Console.Clear();
+        Console.WriteLine(xtree.Config.Data.DataXTree.Queue.DisplayFromOlder()); 
+        Console.ReadKey();
 
 #if  false // testing xtree.remove 
         Console.WriteLine(xtree.Queue.DisplayFromOlder());

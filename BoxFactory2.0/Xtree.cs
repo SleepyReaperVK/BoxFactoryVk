@@ -1,6 +1,7 @@
 ﻿using BTree;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,14 +13,39 @@ namespace BoxFactory2._0
     {
 
         private BinaryTree<double, BinaryTree<double, Box>> _xtr;
-        private LinkedListQueue<Box> _queue = new LinkedListQueue<Box>();
+        private LinkedListQueue<Box> _queue;
+        private Configuration _config;
 
         public BinaryTree<double, BinaryTree<double, Box>> XTree { get { return _xtr; } set { _xtr = value; } }
         public LinkedListQueue<Box> Queue { get { return _queue; } set { _queue = value; } }
 
+        #region ConfigProp
+
+        public Configuration Config { get { return _config;} set { _config = value; } }
+        public int MaxBox { get; set; } = 100;
+        public int MinBox { get; set; } = 0;
+
+
+
+        #endregion
+
         public xtree()
         {
+
             XTree = new BinaryTree<double, BinaryTree<double, Box>>();
+            Queue = new LinkedListQueue<Box>();      
+
+        }
+
+        public xtree(Configuration config)
+        {
+            Config=config;
+            XTree = config.Data.DataXTree.XTree;
+            Queue = config.Data.DataXTree.Queue;
+            MaxBox = config.Data.DataXTree.MaxBox;
+            MinBox = config.Data.DataXTree.MinBox;
+            Debug.WriteLine("config is done");
+
         }
 
 

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BTree;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,8 +35,10 @@ namespace BoxFactory2._0
         public class ConfigData
         {
             public int MaxBoxes { get; set; }
-            public string Foo { get; set; }
-            public double XXXXXXXXX { get; set; }
+            public int MinBoxes { get; set; }
+          
+
+            public xtree DataXTree { get; set; }
         }
     }
 }

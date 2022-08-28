@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 namespace BoxFactory2._0
 {
     // Manu is the collection of all defult Console screens 
-    public static class Menu
+    public  class Menu
     {
+        xtree Tree = new xtree();
+
+
         public static void MenuManeger()//choose if maneger or customer
         {
             Console.WriteLine("Welcom to the BoxShop, you are? \n 1.Maneger \n 2.Customer");
