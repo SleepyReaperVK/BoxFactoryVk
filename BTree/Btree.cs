@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace BTree
+namespace BoxFactory.Logi
 {
 
     public class Node<k, v> where k : IComparable

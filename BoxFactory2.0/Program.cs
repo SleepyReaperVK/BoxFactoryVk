@@ -1,6 +1,8 @@
 ﻿
 using BoxFactory2._0;
-using BTree;
+using BoxFactory.Logi;
+
+
 
 class program
 {
@@ -13,13 +15,11 @@ class program
     {
 
         var config = new Configuration();
-        
+
         Console.WriteLine($"Max boxes: {config.Data.MaxBoxes}");
         Console.WriteLine($"Foo: {config.Data.Foo}");
         Console.WriteLine($"Xs: {config.Data.XXXXXXXXX}");
-        config.Data.MaxBoxes = 3;
-        Console.WriteLine($"Max boxes: {config.Data.MaxBoxes}");
-        config.update(config.Data);
+
         Console.ReadKey();
 
         //// xtree is an object using Btree to make the xtree with ytree as its value
@@ -49,7 +49,7 @@ class program
 
 
 
-#if  false // testing xtree.remove 
+#if true // testing xtree.remove 
         Console.WriteLine(xtree.Queue.DisplayFromOlder());
         Console.WriteLine("_____________________________\n");
         xtree.Remove(10, 10);
@@ -59,6 +59,16 @@ class program
         Console.WriteLine("_____________________________\n");
         Console.WriteLine(xtree.Queue.DisplayFromOlder()); 
 #endif
+
+#if false // testting xtree.LinkedList
+
+
+
+
+#endif
+
+
+
     }
 
 }

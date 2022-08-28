@@ -7,10 +7,19 @@ using System.Threading.Tasks;
 namespace BoxFactory2._0
 {
     // Manu is the collection of all defult Console screens 
+
+
+
+#if false
     public static class Menu
     {
+
+
+
+
         public static void MenuManeger()//choose if maneger or customer
         {
+            Console.Clear();
             Console.WriteLine("Welcom to the BoxShop, you are? \n 1.Maneger \n 2.Customer");
             var Input =Console.ReadLine();
             int temp;
@@ -45,13 +54,31 @@ namespace BoxFactory2._0
         /// </summary>
         private static void  CustomerMenue()
         {
-            throw new NotImplementedException();
+            Console.Clear();
+            Console.WriteLine("Hello dear Customer , please input the Base of your present: ");
+            var Inputx = Console.ReadLine();
+            double tempx;
+            Console.WriteLine("please input the Hight of your present: ");
+            var Inputy = Console.ReadLine();
+            double tempy;
+            Console.WriteLine("please input the amount you need: ");
+            var InputS = Console.ReadLine();
+            int tempS;
+            if (!Double.TryParse(Inputx, out tempx) || !Double.TryParse(Inputy, out tempy)|| !int+.TryParse(Inputy, out tempy)) // checking Inputs
+            {
+                Console.WriteLine("Invalid Input/s .... resturting ,press any key");
+                Console.ReadKey();
+                CustomerMenue();
+            }
+            else // input is valid // bring boxes
+            {
+
+            }
         }
         /// <summary>
         ///  Maneger can view the stock , check for expire box, add boxes , Remove existing ones
         ///  
         /// </summary>
-
         private static void ManegerMenue()
         {
             Console.WriteLine("Welcom back, Boss : \n 1.addBox \n 2.RemoveBox \n 3.Check for expired boxes \n 4.Display Storage by Date ");
@@ -134,5 +161,56 @@ namespace BoxFactory2._0
             return false;
         }
 
+
+        /// <summary>
+        /// returns false if Perches isnt complete , true if Perches is complete , updates the Queue and amount
+        /// possibale to buy diffrent box if amount is high. 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
+        private static bool CustemerBuy(double x , double y , int amount)
+        {
+            var xNode = xtree.find(x);//may be not found
+            if(xNode == null)//x not found display "BestBoxes"
+            {
+                Console.WriteLine("no box with this base, display 5 closest opthions? Y/N");
+                var Input = Console.ReadLine();
+
+                if (Input.StartsWith('y') || Input.StartsWith('Y'))//choose to display bestboxes
+                    xtree.BestBoxes(x,y,5);
+                else //input is not positive
+                {
+                    Console.WriteLine("reseting ... press any key");
+                    Console.ReadKey();
+                    CustomerMenue();
+                }
+            
+            }
+            else// current x is found try find y
+            {
+                var yNode = xNode.find(y);
+                if (yNode == null)//y not found display "BestBoxes"
+                {
+                    Console.WriteLine("no box with this Hight, display 5 closest opthions? Y/N");
+                    var Input = Console.ReadLine();
+
+                    if (Input.StartsWith('y') || Input.StartsWith('Y'))//choose to display bestboxes
+                        xtree.BestBoxes(x, y, 5);
+                    else //input is not positive
+                    {
+                        Console.WriteLine("reseting ... press any key");
+                        Console.ReadKey();
+                        CustomerMenue();
+                    }
+
+                }
+
+                return false;
+        }
+
+
     }
+#endif
 }
