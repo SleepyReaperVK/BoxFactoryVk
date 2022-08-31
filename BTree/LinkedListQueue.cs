@@ -10,11 +10,13 @@ namespace BoxFactory.Logi
 
     public class LinkedListQueue<T>
     {
-        private TNode<T> front, back;// front is the oldessin the queue while Back is the latest
+        private TNode<T> _front, _back;// front is the oldessin the queue while Back is the latest
 
+        public TNode<T> Front { get { return _front; } set { _front = value; } }
+        public TNode<T> Back { get { return _back; } set { _back = value; } }
         public LinkedListQueue()
         {
-            front = back = null;
+            Front = Back = null;
         }
 
         //O(1)
@@ -24,13 +26,13 @@ namespace BoxFactory.Logi
 
 
         if (isEmpty())
-                front = back = temp;
+                Front = Back = temp;
             else
             {
-                var temp2 = back;
-               back.Next = temp;
-                back = temp;
-                back.Prev = temp2;
+                var temp2 = Back;
+               Back.Next = temp;
+                Back = temp;
+                Back.Prev = temp2;
 
             }
         }
@@ -38,7 +40,7 @@ namespace BoxFactory.Logi
         //O(1)
         public bool isEmpty()
         {
-            return front == null;
+            return Front == null;
         }
 
         //O(1)
@@ -46,22 +48,22 @@ namespace BoxFactory.Logi
         {
             if (isEmpty())
                 return default;
-            T temp = front.Data;
-            front = front.Next;
-            front.Prev = null;
-            if (front == null)
-                back = null;
+            T temp = Front.Data;
+            Front = Front.Next;
+            Front.Prev = null;
+            if (Front == null)
+                Back = null;
             return temp;
         }
 
         //O(n)
-        public bool remove(T val)
+        public bool remove(T val)// TNode<T> node // need s to be in O(1)
         {
             var temp = new TNode<T>(val, null, null);
             bool isSuccessful = false;
             if (isEmpty())
                 return isSuccessful ;
-            var temp2 = back;
+            var temp2 = Back;
             // goes from the the youngest box to the oldes 
             while (true)
             {
@@ -69,7 +71,10 @@ namespace BoxFactory.Logi
                     break ;
                 if (temp.Data.Equals(temp2.Data))
                 {
-                    temp2.Prev.Next = temp2.Next;
+                    if (temp2.Prev != null)
+                        temp2.Prev.Next = temp2.Next;
+                    else
+                        temp2.Next.Prev = null;// in the Head/Tail
                     isSuccessful= true;
                     break;
                 }
@@ -83,7 +88,7 @@ namespace BoxFactory.Logi
         {
             if (isEmpty())
                 return default;
-            var temp = front;
+            var temp = Front;
             string str= string.Empty;
             while (temp!=null)
             {
@@ -96,7 +101,7 @@ namespace BoxFactory.Logi
         {
             if (isEmpty())
                 return default;
-            var temp = back;
+            var temp = Back;
             string str = string.Empty;
             while (temp != null)
             {
@@ -106,11 +111,12 @@ namespace BoxFactory.Logi
             return str;
         }
 
+       
         
 
     }
 
-    internal class TNode<T>
+    public class TNode<T>
     {
         private T _data;
         private TNode<T> _next;

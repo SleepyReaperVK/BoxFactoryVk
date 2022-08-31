@@ -14,16 +14,15 @@ class program
     public static void Main(string[] args)
     {
 
-        var config = new Configuration();
 
-        Console.WriteLine($"Max boxes: {config.Data.MaxBoxes}");
-        Console.WriteLine($"Foo: {config.Data.Foo}");
-        Console.WriteLine($"Xs: {config.Data.XXXXXXXXX}");
-
-        Console.ReadKey();
-
-        //// xtree is an object using Btree to make the xtree with ytree as its value
-        #region test 1 treeSetup
+        Menu main = new Menu();
+        main.MenuManeger();
+        
+        
+        
+        
+        // xtree is an object using Btree to make the xtree with ytree as its value
+        #if false //test 1 treeSetup
         xtree xtree = new xtree();
 
 
@@ -43,13 +42,13 @@ class program
         xtree.Insert(10, 7);
         xtree.Insert(10, 8);
         xtree.Insert(10, 9);//back - young
-        #endregion
+        #endif
 
 
 
 
 
-#if true // testing xtree.remove 
+#if false // testing xtree.remove 
         Console.WriteLine(xtree.Queue.DisplayFromOlder());
         Console.WriteLine("_____________________________\n");
         xtree.Remove(10, 10);

@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace BoxFactory.Logi
 {
-    public class LinkedList<T> 
+    public class LinkedListVK<T> 
     {
         public Node<T> Head { get; set; }//Oldest box
         public Node<T> Last { get; set; }// youngest box
 
         public int Length { get; set; }
 
-        public LinkedList()
+        public LinkedListVK()
         {
             Head = null;
             Last = null;
