@@ -1,4 +1,4 @@
-#BoxFactory 
+# BoxFactory 
 Project focusing on Data structure using C# application.
 
 ### Concept 
@@ -22,7 +22,7 @@ in this Img you can see the root Node and 2 of its children , one bigger and one
 When we search for a specific x value we cut the search by half each level we go down and the same goes once we found the base(x) we go over the Binary Tree of y .
 
 
-##to run
+## Installation 
  Clone repository 
 in the Folder , double click 
 the .sln file .
